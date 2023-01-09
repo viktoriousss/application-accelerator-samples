@@ -34,7 +34,7 @@ accelerator:
   imports:
   - name: java-version
   - name: tap-workload
-  - name: build-wrapper
+  - name: build-wrapper-maven
 
 engine:
   chain:
@@ -131,9 +131,4 @@ engine:
   - merge:
     - include: [ "**" ]
     - type: InvokeFragment
-      let:
-      - name: buildTool
-        expression: "'maven'"
-      reference: build-wrapper
-    - type: InvokeFragment
-      reference: java-version
+      reference: build-wrapper-maven

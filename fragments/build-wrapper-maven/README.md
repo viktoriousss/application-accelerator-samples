@@ -1,6 +1,6 @@
-# Tanzu Application Platform Build Tool Wrapper Fragment
+# Tanzu Application Platform Maven Wrapper Fragment
 
-A Fragment for adding a build tool wrappers.
+A Fragment for adding a Maven build wrapper.
 
 ## Using the fragment
 
@@ -12,11 +12,10 @@ accelerator:
 # ...
 
   imports:
-  - name: build-wrapper
+  - name: build-wrapper-maven
 ```
 
-Then in your `engine` section add an `InvokeFragment` transform passing in the name of the `buildTool` option variable
-to be used, valid values are 'maven' and 'gradle':
+Then in your `engine` section add an `InvokeFragment` transform:
 
 ```yaml
 engine:
@@ -25,10 +24,7 @@ engine:
     # this is where your original transforms go
     
     - type: InvokeFragment
-      let:
-      - name: buildTool
-        expression: "maven"
-      reference: build-wrapper
+      reference: build-wrapper-maven
 ```
 
 ## Creating the fragment resource
@@ -39,13 +35,13 @@ To create this fragment use:
 apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
 kind: Fragment
 metadata:
-  name: build-wrapper
+  name: build-wrapper-maven
   namespace: accelerator-system
 spec:
-  displayName: Include build tool wrapper
+  displayName: Include Maven wrapper
   git:
     ref:
       branch: main
     url: https://github.com/vmware-tanzu/application-accelerator-samples.git
-    subPath: fragments/build-wrapper
+    subPath: fragments/build-wrapper-maven
 ```

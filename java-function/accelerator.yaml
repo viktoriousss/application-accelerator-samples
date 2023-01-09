@@ -43,7 +43,8 @@ accelerator:
 
   imports:
     - name: tap-workload
-    - name: build-wrapper
+    - name: build-wrapper-maven
+    - name: build-wrapper-gradle
 
 engine:
   merge:
@@ -101,10 +102,11 @@ engine:
 
     # Build wrapper
     - type: InvokeFragment
-      let:
-      - name: buildTool
-        expression: "#buildType"
-      reference: build-wrapper
+      condition: "#buildType == 'maven'"
+      reference: build-wrapper-maven
+    - type: InvokeFragment
+      condition: "#buildType == 'gradle'"
+      reference: build-wrapper-gradle
 
     # TAP files
     - include: [ "config/workload.yaml" ]

@@ -17,7 +17,7 @@ accelerator:
 
   imports:
   - name: tap-workload
-  - name: build-wrapper
+  - name: build-wrapper-maven
 
 engine:
   merge:
@@ -60,7 +60,4 @@ engine:
         with: "#artifactId"
 
   - type: InvokeFragment
-    let:
-    - name: buildTool
-      expression: "'maven'"
-    reference: build-wrapper
+    reference: build-wrapper-maven

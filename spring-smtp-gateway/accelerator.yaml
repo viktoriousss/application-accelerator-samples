@@ -68,7 +68,7 @@ accelerator:
     required: true
   imports:
     - name: tap-workload
-    - name: build-wrapper
+    - name: build-wrapper-maven
 
 engine:
   merge:
@@ -138,7 +138,4 @@ engine:
       regex: 'templates/rmqResourceClaim.template'
       rewriteTo: "'config/app-operator/rmqResourceClaim.yaml'"
   - type: InvokeFragment
-    let:
-    - name: buildTool
-      expression: "'maven'"
-    reference: build-wrapper
+    reference: build-wrapper-maven

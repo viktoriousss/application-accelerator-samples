@@ -10,9 +10,5 @@ accelerator:
 
 engine:
   merge:
-    - condition: "#includeBuildToolWrapper AND #buildTool == 'maven'"
+    - condition: "#includeBuildToolWrapper"
       include: [ "mvnw", "mvnw.cmd", ".mvn/**" ]
-      exclude: [ "gradlew*", "gradle/**" ]
-    - condition: "#includeBuildToolWrapper AND #buildTool == 'gradle'"
-      include: [ "gradlew*", "gradle/**" ]
-      exclude: [ "mvnw", "mvnw.cmd", ".mvn/**" ]
